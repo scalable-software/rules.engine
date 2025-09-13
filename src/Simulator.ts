@@ -10,8 +10,8 @@ type Rule = {
   id: number;
   description: string;
   condition: Condition;
-  trueOutcome: Outcome;
-  falseOutcome: Outcome;
+  true: Outcome;
+  false: Outcome;
 };
 
 class Simulator {
@@ -26,20 +26,16 @@ class Simulator {
     if (!current) throw new Error(`Rule ${start} not found`);
 
     while (current) {
-      const result = current.condition(context);
-      const outcome = result
-        ? current.trueOutcome
-        : current.falseOutcome;
+      const { type, id } = current.condition(context)
+        ? current.true
+        : current.false;
 
-      if (outcome.type === "end") {
-        return outcome.id;
-      }
+      if (type === "end") return id;
 
-      if (outcome.type === "rule" && outcome.id !== null) {
-        current = this.rules.get(outcome.id) || null;
-      } else {
-        return null;
-      }
+      current =
+        type === "rule" && id !== null
+          ? this.rules.get(id) || null
+          : null;
     }
 
     return null;
@@ -50,17 +46,17 @@ class Simulator {
 const rules: Rule[] = [
   {
     id: 1,
-    description: "Check diagnosis is STEMI (204)",
-    condition: (context) => context.diagnosis === 204,
-    trueOutcome: { type: "rule", id: 2 },
-    falseOutcome: { type: "end", id: 99999 },
+    description: "is diagnosis 204",
+    condition: ({ diagnosis }) => diagnosis === 204,
+    true: { type: "rule", id: 2 },
+    false: { type: "end", id: 99999 },
   },
   {
     id: 2,
-    description: "Check length of stay < 5 days",
-    condition: (context) => context.stayLength < 5,
-    trueOutcome: { type: "end", id: 99499020 },
-    falseOutcome: { type: "end", id: 99499030 },
+    description: "is length of stay less than 5 days",
+    condition: ({ stayLength }) => stayLength < 5,
+    true: { type: "end", id: 99499020 },
+    false: { type: "end", id: 99499030 },
   },
 ];
 
