@@ -1,0 +1,142 @@
+{
+  "Component": "Pin",
+  "Tag": "pin-component",
+  "Description": "The Pin component is a button that can be pinned or unpinned.",
+  "state": {
+    "visible": {
+      "type": "string",
+      "description": "Indicates whether the pin is visible.",
+      "values": ["yes", "no"],
+      "default": "yes",
+      "observed": true,
+      "initialized": false
+    },
+    "state": {
+      "type": "string",
+      "description": "Indicates the current state of the pin.",
+      "values": ["pinned", "unpinned"],
+      "default": "unpinned",
+      "observed": true,
+      "initialized": true
+    }
+  },
+  "operations": {
+    "show": {
+      "description": "Sets the 'visible' state to 'yes', making the pin visible.",
+      "parameters": [],
+      "returns": "void"
+    },
+    "hide": {
+      "description": "Sets the 'visible' state to 'no', hiding the pin.",
+      "parameters": [],
+      "returns": "void"
+    },
+    "pin": {
+      "description": "Sets the 'state' to 'pinned', pin the pin.",
+      "parameters": [],
+      "returns": "void"
+    },
+    "unpin": {
+      "description": "Sets the 'state' to 'unpinned', unpin the pin.",
+      "parameters": [],
+      "returns": "void"
+    },
+    "toggle": {
+      "description": "Toggles the 'state' between 'pinned' and 'unpinned'.",
+      "parameters": [],
+      "returns": "void"
+    }
+  },
+  "events": {
+    "onshow": {
+      "description": "Triggered when the pin becomes visible (state 'visible' changes to 'yes').",
+      "parameters": [
+        {
+          "name": "detail",
+          "type": "object",
+          "description": "Contains the new visibility state.",
+          "properties": {
+            "visible": {
+              "type": "string",
+              "values": ["yes"]
+            }
+          }
+        }
+      ]
+    },
+    "onhide": {
+      "description": "Triggered when the pin is hidden (state 'visible' changes to 'no').",
+      "parameters": [
+        {
+          "name": "detail",
+          "type": "object",
+          "description": "Contains the new visibility state.",
+          "properties": {
+            "visible": {
+              "type": "string",
+              "values": ["no"]
+            }
+          }
+        }
+      ]
+    },
+    "onpin": {
+      "description": "Triggered when the pin is pinned (state 'state' changes to 'pinned').",
+      "parameters": [
+        {
+          "name": "detail",
+          "type": "object",
+          "description": "Contains the new state.",
+          "properties": {
+            "state": {
+              "type": "string",
+              "values": ["pinned"]
+            }
+          }
+        }
+      ]
+    },
+    "onunpin": {
+      "description": "Triggered when the pin is unpinned (state 'state' changes to 'unpinned').",
+      "parameters": [
+        {
+          "name": "detail",
+          "type": "object",
+          "description": "Contains the new state.",
+          "properties": {
+            "state": {
+              "type": "string",
+              "values": ["unpinned"]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "composition": {
+    "template": {
+      "description": "The HTML template for the pin component.",
+      "contains": ["icon"],
+      "type": "template",
+      "id": "pin-component"
+    },
+    "icon": {
+      "description": "The main container of the pin component, styled as a button.",
+      "contains": ["svg(on)", "svg(off)"],
+      "type": "div",
+      "class": "icon"
+    },
+    "svg(on)": {
+      "description": "The SVG icon used for the 'on' state.",
+      "contains": ["path"],
+      "type": "svg",
+      "class": "pinned"
+    },
+    "svg(off)": {
+      "description": "The SVG icon used for the 'off' state.",
+      "contains": ["path"],
+      "type": "svg",
+      "class": "unpinned"
+    }
+  }
+}

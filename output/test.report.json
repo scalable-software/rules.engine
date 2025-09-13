@@ -1,0 +1,928 @@
+[
+  {
+    "type": "State",
+    "spec": "visible",
+    "definition": [
+      "Given Attribute.VISIBLE Type.STATE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.visible property is defined",
+      "then pin.visible is Visible.YES"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "State",
+    "spec": "visible",
+    "definition": [
+      "Given Attribute.VISIBLE Type.STATE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.visible property is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "hide",
+    "definition": [
+      "Given Operation.HIDE Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.hide() method is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "hide",
+    "definition": [
+      "Given Operation.HIDE Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when pin.hide()",
+      "then pin.visible is Visible.NO"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "hide",
+    "definition": [
+      "Given Operation.HIDE Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when pin.hide()",
+      "then attribute visible is Visible.NO"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Attributes",
+    "definition": [
+      "Given Attributes Type.CONFIG test",
+      "and Pin imported",
+      "then Pin is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Attributes",
+    "definition": [
+      "Given Attributes Type.CONFIG test",
+      "and Pin imported",
+      "and Pin is defined",
+      "then Pin.Attributes static getter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Attributes",
+    "definition": [
+      "Given Attributes Type.CONFIG test",
+      "and Pin imported",
+      "and Pin is defined",
+      "and Pin.Attributes static getter is defined",
+      "then Pin.Attributes is Attribute"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.on is defined and used with 'onpin'",
+      "when pin.pin()",
+      "then onpin is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.onunpin setter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.onpin setter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.onhide setter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.onshow setter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.on is defined and used with '*'",
+      "and pin.state is State.PINNED",
+      "when pin.unpin()",
+      "then on is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.on is defined and used with '*'",
+      "when pin.pin()",
+      "then on is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.on is defined and used with '*'",
+      "when pin.hide()",
+      "then on is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.on is defined and used with '*'",
+      "and pin.visible is Visible.NO",
+      "when pin.show()",
+      "then on is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "on",
+    "definition": [
+      "Given on Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.on is defined and used with '*'",
+      "when pin.toggle()",
+      "then on is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onhide",
+    "definition": [
+      "Given Event.ONHIDE Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.onhide setter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onhide",
+    "definition": [
+      "Given Event.ONHIDE Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and and pin.onhide setter is defined",
+      "and pin.onhide is set to new listener ",
+      "when pin.hide()",
+      "then onhide is not called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onhide",
+    "definition": [
+      "Given Event.ONHIDE Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and and pin.onhide setter is defined",
+      "and pin.onhide is set to new listener ",
+      "when pin.hide()",
+      "then onhide2 is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onhide",
+    "definition": [
+      "Given Event.ONHIDE Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and and pin.onhide setter is defined",
+      "when pin.hide()",
+      "then onhide is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "State",
+    "spec": "state",
+    "definition": [
+      "Given Attribute.STATE Type.STATE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.state property is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "State",
+    "spec": "state",
+    "definition": [
+      "Given Attribute.STATE Type.STATE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.state property is defined",
+      "then pin.state is State.UNPINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "State",
+    "spec": "state",
+    "definition": [
+      "Given Attribute.STATE Type.STATE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.state property is defined",
+      "then attribute state is State.UNPINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onpin",
+    "definition": [
+      "Given Event.ONPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.onpin setter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onpin",
+    "definition": [
+      "Given Event.ONPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onpin setter is defined",
+      "when pin.toggle()",
+      "then onpin is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onpin",
+    "definition": [
+      "Given Event.ONPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onpin setter is defined",
+      "and pin.onpin is set to new listener ",
+      "when pin.pin()",
+      "then onpin2 is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onpin",
+    "definition": [
+      "Given Event.ONPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onpin setter is defined",
+      "and pin.onpin is set to new listener ",
+      "when pin.pin()",
+      "then onpin is not called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onpin",
+    "definition": [
+      "Given Event.ONPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onpin setter is defined",
+      "when pin.pin()",
+      "then onpin is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onshow",
+    "definition": [
+      "Given Event.ONSHOW Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onshow setter is defined",
+      "and pin.visible is Visible.NO",
+      "when pin.show()",
+      "then onshow is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onshow",
+    "definition": [
+      "Given Event.ONSHOW Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onshow setter is defined",
+      "and pin.visible is Visible.NO",
+      "and pin.onshow is set to new listener ",
+      "when pin.show()",
+      "then onshow is not called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onshow",
+    "definition": [
+      "Given Event.ONSHOW Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onshow setter is defined",
+      "and pin.visible is Visible.NO",
+      "and pin.onshow is set to new listener ",
+      "when pin.show()",
+      "then onshow2 is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onshow",
+    "definition": [
+      "Given Event.ONSHOW Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.onshow setter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "show",
+    "definition": [
+      "Given Operation.SHOW Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.show() method is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "show",
+    "definition": [
+      "Given Operation.SHOW Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.visible is Visible.NO",
+      "when pin.show()",
+      "then pin.visible is Visible.YES"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "show",
+    "definition": [
+      "Given Operation.SHOW Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.visible is Visible.NO",
+      "when pin.show()",
+      "then attribute visible does not is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "toggle",
+    "definition": [
+      "Given Operation.TOGGLE Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.toggle() method is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "toggle",
+    "definition": [
+      "Given Operation.TOGGLE Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when pin.toggle()",
+      "then attribute state is State.PINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "toggle",
+    "definition": [
+      "Given Operation.TOGGLE Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when pin.toggle()",
+      "then pin.state is State.PINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "toggle",
+    "definition": [
+      "Given Operation.TOGGLE Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when pin.toggle()",
+      "and pin.toggle()",
+      "then attribute state is State.UNPINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "toggle",
+    "definition": [
+      "Given Operation.TOGGLE Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when pin.toggle()",
+      "and pin.toggle()",
+      "then pin.state is State.UNPINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Tag",
+    "definition": [
+      "Given Tag Type.CONFIG test",
+      "and Pin imported",
+      "and Pin is defined",
+      "and Pin.Tag static getter is defined",
+      "then Pin.Tag is Tag"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Tag",
+    "definition": [
+      "Given Tag Type.CONFIG test",
+      "and Pin imported",
+      "and Pin is defined",
+      "then Pin.Tag static getter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Tag",
+    "definition": [
+      "Given Tag Type.CONFIG test",
+      "and Pin imported",
+      "then Pin is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Gesture",
+    "spec": "click",
+    "definition": [
+      "Given Gesture.CLICK Type.GESTURE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when user click on icon",
+      "then onpin is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Gesture",
+    "spec": "click",
+    "definition": [
+      "Given Gesture.CLICK Type.GESTURE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when user click on icon",
+      "then pin.state is State.PINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Gesture",
+    "spec": "click",
+    "definition": [
+      "Given Gesture.CLICK Type.GESTURE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when user click on icon",
+      "then attribute state is State.PINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Gesture",
+    "spec": "click",
+    "definition": [
+      "Given Gesture.CLICK Type.GESTURE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when user click on icon",
+      "and user clicks on pin",
+      "then onunpin is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Gesture",
+    "spec": "click",
+    "definition": [
+      "Given Gesture.CLICK Type.GESTURE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when user click on icon",
+      "and user clicks on pin",
+      "then pin.state is State.UNPINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Gesture",
+    "spec": "click",
+    "definition": [
+      "Given Gesture.CLICK Type.GESTURE test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when user click on icon",
+      "and user clicks on pin",
+      "then attribute state is State.UNPINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Composition",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.COMPOSITION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "then template contains element with class 'pinned'"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Composition",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.COMPOSITION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "then template contains element with class 'unpinned'"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Composition",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.COMPOSITION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "then template is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Composition",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.COMPOSITION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.root contains a linked stylesheet"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Composition",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.COMPOSITION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.root contains template"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Composition",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.COMPOSITION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "then template contains element with class 'icon'"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "unpin",
+    "definition": [
+      "Given Operation.UNPIN Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.unpin() method is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "unpin",
+    "definition": [
+      "Given Operation.UNPIN Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "Given pin.state is State.PINNED",
+      "when pin.unpin()",
+      "then attribute state is State.UNPINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "unpin",
+    "definition": [
+      "Given Operation.UNPIN Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "Given pin.state is State.PINNED",
+      "when pin.unpin()",
+      "then pin.state is State.UNPINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.CONFIG test",
+      "and Pin imported",
+      "then Pin is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.CONFIG test",
+      "and Pin imported",
+      "and Pin is defined",
+      "then Pin.Template static getter is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Configuration",
+    "spec": "Template",
+    "definition": [
+      "Given Template Type.CONFIG test",
+      "and Pin imported",
+      "and Pin is defined",
+      "and Pin.Template static getter is defined",
+      "then Pin.Template is an instance of Template"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "pin",
+    "definition": [
+      "Given Operation.PIN Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when pin.pin()",
+      "then attribute state is State.PINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "pin",
+    "definition": [
+      "Given Operation.PIN Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "when pin.pin()",
+      "then pin.state is State.PINNED"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Operation",
+    "spec": "pin",
+    "definition": [
+      "Given Operation.PIN Type.OPERATION test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.pin() method is defined"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onunpin",
+    "definition": [
+      "Given Event.ONUNPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onunpin setter is defined",
+      "and pin.state is State.PINNED",
+      "when pin.toggle()",
+      "then onunpin is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onunpin",
+    "definition": [
+      "Given Event.ONUNPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onunpin setter is defined",
+      "and pin.state is State.PINNED",
+      "when pin.unpin()",
+      "then onunpin is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onunpin",
+    "definition": [
+      "Given Event.ONUNPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onunpin setter is defined",
+      "and pin.state is State.PINNED",
+      "and pin.onunpin is set to new listener ",
+      "when pin.unpin()",
+      "then onunpin is not called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onunpin",
+    "definition": [
+      "Given Event.ONUNPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "and pin.onunpin setter is defined",
+      "and pin.state is State.PINNED",
+      "and pin.onunpin is set to new listener ",
+      "when pin.unpin()",
+      "then onunpin2 is called"
+    ],
+    "status": "pass"
+  },
+  {
+    "type": "Event",
+    "spec": "onunpin",
+    "definition": [
+      "Given Event.ONUNPIN Type.EVENT test",
+      "and Pin is defined in custom element registry",
+      "and HTML Template is added to DOM",
+      "and a new pin is added to DOM",
+      "then pin.onunpin setter is defined"
+    ],
+    "status": "pass"
+  }
+]

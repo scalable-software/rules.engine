@@ -1,0 +1,137 @@
+/* =======================
+  Host Element Styles
+======================= */
+:host {
+  /* Light mode color variables */
+  --button-background-color: #ffffff;
+  --button-hover-background-color: #f3f3f3;
+  --button-active-background-color: #e1e1e1;
+  --button-border-color: #d1d1d1;
+  --button-border-hover-color: #a1a1a1;
+  --svg-fill-color: #5a5a5a;
+  --svg-hover-fill-color: #404040;
+
+  /* Shadow and radius */
+  --button-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  --button-radius: 8px;
+
+  /* Sizes and margins */
+  --icon-size: 40px;
+  --icon-margin: 4px;
+  --svg-size: 24px;
+  --svg-margin: 8px;
+
+  display: inline-block;
+}
+
+/* Dark Mode Variables */
+@media (prefers-color-scheme: dark) {
+  :host {
+    /* Dark mode color variables */
+    --button-background-color: #1e1e1e; /* Dark background */
+    --button-hover-background-color: #2a2a2a; /* Hover background */
+    --button-active-background-color: #333333; /* Active background */
+    --button-border-color: #3c3c3c; /* Border color */
+    --button-border-hover-color: #4a4a4a; /* Border hover color */
+    --svg-fill-color: #cfcfcf; /* Icon color */
+    --svg-hover-fill-color: #ffffff; /* Icon hover color */
+    --button-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); /* Shadow */
+  }
+}
+
+:host([visible="no"]) {
+  display: none;
+}
+
+/* =======================
+  Icon Styles
+======================= */
+.icon {
+  position: relative;
+  margin: var(--icon-margin);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: var(--button-background-color);
+  border: 1px solid var(--button-border-color);
+  border-radius: var(--button-radius);
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Active state styles for the icon (when clicked or tapped) */
+.icon:active {
+  background-color: var(--button-active-background-color);
+  border-color: var(--button-border-hover-color);
+  box-shadow: none;
+}
+
+/* =======================
+  Icon Hover Styles
+======================= */
+@media (hover: hover) {
+  .icon:hover {
+    background-color: var(--button-hover-background-color);
+    border-color: var(--button-border-hover-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* =======================
+  SVG Icon Styles
+======================= */
+svg {
+  margin: var(--svg-margin);
+  width: var(--svg-size);
+  height: var(--svg-size);
+  fill: var(--svg-fill-color);
+  transition: fill 0.2s, opacity 0.2s;
+}
+
+/* Hover effect for the SVG icons */
+@media (hover: hover) {
+  .icon:hover svg {
+    fill: var(--svg-hover-fill-color);
+  }
+}
+
+/* =======================
+  State Visibility
+======================= */
+.pinned {
+  display: none;
+}
+
+.unpinned {
+  display: inline-block;
+}
+
+/* =======================
+  State: Pinned
+======================= */
+:host([state="pinned"]) .icon {
+  background-color: var(--button-active-background-color);
+  border-color: var(--button-border-hover-color);
+}
+
+:host([state="pinned"]) .pinned {
+  display: inline-block;
+}
+
+:host([state="pinned"]) .unpinned {
+  display: none;
+}
+
+/* =======================
+  State: Unpinned
+======================= */
+:host([state="unpinned"]) .pinned {
+  display: none;
+}
+
+:host([state="unpinned"]) .unpinned {
+  display: inline-block;
+}
