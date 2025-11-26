@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Worker - SharedArrayBuffer Demo</title>
+    <link rel="stylesheet" href="html.style.css" />
+    <style>
+      .info-box {
+        background: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      .info-box strong {
+        color: #1976d2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Data Processing with SharedArrayBuffer</h1>
+
+    <div class="container">
+      <h2>Generate & Process Data</h2>
+      <div class="button-group">
+        <button onclick="generateAndProcess(1000)">1,000 records</button>
+        <button onclick="generateAndProcess(10000)">10,000 records</button>
+        <button onclick="generateAndProcess(1000000)">100,000 records</button>
+      </div>
+      <span id="loading" class="loading" style="display: none"
+        >Processing...</span
+      >
+    </div>
+
+    <div class="container" id="results" style="display: none">
+      <h2>Results</h2>
+      <div class="stats" id="stats-container"></div>
+      <div id="processing-time" class="processing-time"></div>
+    </div>
+
+    <script>
+      // Create Web Worker instance
+      let worker = null;
+
+      function initWorker() {
+        if (!worker) {
+          worker = new Worker("/demo/web-worker-sab/worker.js");
+          console.log("Web Worker created");
+        }
+        return worker;
+      }
+
+      function generateFakeData(count) {
+        const data = [];
+        for (let i = 0; i < count; i++) {
+          data.push({
+            date: new Date(
+              2025,
+              10,
+              Math.floor(i / 100) + 1,
+            ).toLocaleDateString(),
+            steps: Math.floor(Math.random() * 15000),
+            calories: Math.floor(Math.random() * 2500) + 1200,
+            heartRate: Math.floor(Math.random() * 40) + 60,
+          });
+        }
+        return data;
+      }
+
+      /**
+       * Convert data array to SharedArrayBuffer
+       * Format: [count, steps1, calories1, heartRate1, steps2, calories2, heartRate2, ...]
+       */
+      function dataToSharedBuffer(dataArray) {
+        // Each record = 3 values (steps, calories, heartRate)
+        // + 1 for count at beginning
+        const totalSize = 1 + dataArray.length * 3;
+        const bytesNeeded = totalSize * 4; // Int32 = 4 bytes each
+
+        console.log(
+          `Creating SharedArrayBuffer: ${(bytesNeeded / 1024).toFixed(2)} KB`,
+        );
+
+        const shared = new SharedArrayBuffer(bytesNeeded);
+        const view = new Int32Array(shared);
+
+        // Write count at index 0
+        view[0] = dataArray.length;
+
+        // Write data
+        let offset = 1;
+        for (let i = 0; i < dataArray.length; i++) {
+          view[offset++] = dataArray[i].steps;
+          view[offset++] = dataArray[i].calories;
+          view[offset++] = dataArray[i].heartRate;
+        }
+
+        console.log(
+          `Packed ${dataArray.length} records into SharedArrayBuffer`,
+        );
+        return shared;
+      }
+
+      function processDataInWorker(dataArray) {
+        return new Promise((resolve, reject) => {
+          const currentWorker = initWorker();
+
+          // Convert to SharedArrayBuffer
+          const sharedBuffer = dataToSharedBuffer(dataArray);
+
+          // Listen for response from worker
+          currentWorker.onmessage = (event) => {
+            if (event.data.type === "STATS_READY") {
+              resolve(event.data.stats);
+            }
+          };
+
+          // Handle worker errors
+          currentWorker.onerror = (error) => {
+            reject(error);
+          };
+
+          // Send SharedArrayBuffer to worker (no data copy!)
+          console.log("Sending SharedArrayBuffer to worker...");
+          currentWorker.postMessage({
+            type: "PROCESS_DATA",
+            buffer: sharedBuffer,
+          });
+        });
+      }
+
+      async function generateAndProcess(count) {
+        const loading = document.getElementById("loading");
+        loading.style.display = "inline-block";
+
+        console.log(`Generating ${count} data points...`);
+        const data = generateFakeData(count);
+
+        console.log(`Processing with SharedArrayBuffer...`);
+
+        try {
+          const stats = await processDataInWorker(data);
+          console.log("Stats received:", stats);
+          displayData(stats);
+        } catch (err) {
+          console.error("Error:", err);
+          alert("Error: " + err.message);
+        }
+
+        loading.style.display = "none";
+      }
+
+      function displayData(stats) {
+        const resultsDiv = document.getElementById("results");
+        const statsContainer = document.getElementById("stats-container");
+        const processingTimeDiv = document.getElementById("processing-time");
+
+        statsContainer.innerHTML = `
+        <div class="stat-card">
+          <div class="stat-label">Total Steps</div>
+          <div class="stat-value">${stats.totalSteps.toLocaleString()}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg Steps/Day</div>
+          <div class="stat-value">${stats.avgSteps.toLocaleString()}</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg Heart Rate</div>
+          <div class="stat-value">${stats.avgHeartRate} bpm</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Heart Rate Range</div>
+          <div class="stat-value">${stats.minHeartRate}-${stats.maxHeartRate} bpm</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Max Steps</div>
+          <div class="stat-value">${stats.maxSteps.toLocaleString()} steps</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Trend</div>
+          <div class="stat-value">${stats.trend}</div>
+        </div>
+        <div class="stat-card" style="grid-column: span 2;">
+          <div class="stat-label">Activity Level Breakdown</div>
+           <div class="breakdown">
+             <div class="breakdown-item">
+               <div>Sedentary</div>
+               <div>${stats.activityBreakdown.sedentary}</div>
+             </div>
+             <div class="breakdown-item">
+               <div>Light</div>
+               <div>${stats.activityBreakdown.light}</div>
+             </div>
+             <div class="breakdown-item">
+               <div>Moderate</div>
+               <div>${stats.activityBreakdown.moderate}</div>
+             </div>
+             <div class="breakdown-item">
+               <div>Active</div>
+               <div>${stats.activityBreakdown.active}</div>
+             </div>
+           </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Data Points</div>
+          <div class="stat-value">${stats.totalPoints.toLocaleString()}</div>
+        </div>
+      `;
+
+        processingTimeDiv.innerHTML = `
+        <strong>⚡ Processing time: ${stats.processingTimeMs}ms</strong>
+      `;
+
+        resultsDiv.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
